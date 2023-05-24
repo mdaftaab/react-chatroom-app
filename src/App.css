@@ -11,3 +11,20 @@
 .container.me{
   flex-direction: row-reverse;
 }
+.me .chatbox{
+  background-color: aquamarine;
+}
+.btm{
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  display: flex;
+  flex-direction: row;
+}
+.btm input{
+  padding: 10px 0;
+  flex-grow: 1;
+}
+.btm button{
+  padding: 10px 0;
+}
