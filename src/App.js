@@ -9,22 +9,23 @@ function App() {
   const [msg, setMsg] = useState("");
 
   const db = getDatabase();
-  const chatListRef = ref(db, 'chats');
-  useEffect(()=>{
+  const chatListRef = ref(db, "chats");
+
+  useEffect(() => {
     onChildAdded(chatListRef, (data) => {
-      const c = [...chats]
-      c.push(data.val());
-      setChats(c);
-      console.log(data.val());
+      // const c = [...chats]
+      // c.push(data.val());
+      setChats((chats) => [...chats, data.val()]);
+      // console.log(data.val());
     });
-  },[])
+  }, []);
 
   const sendChat = () => {
-  
-  const chatRef = push(chatListRef);
-  set(chatRef, {
-    name, message: msg 
-  });
+    const chatRef = push(chatListRef);
+    set(chatRef, {
+      name,
+      message: msg,
+    });
 
     // const c = [...chats];
     // c.push();
@@ -47,8 +48,11 @@ function App() {
         <div>
           <h3>User: {name}</h3>
           <div className="chat-container">
-            {chats.map((c,i) => (
-              <div key={i} className={`container ${c.name === name ? "me" : ""}`}>
+            {chats.map((c, i) => (
+              <div
+                key={i}
+                className={`container ${c.name === name ? "me" : ""}`}
+              >
                 <p className="chatbox">
                   <strong>{c.name} </strong>
                   <span>{c.message}</span>

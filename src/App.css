@@ -7,6 +7,7 @@
 }
 .container{
   display: flex;
+  padding-bottom: 30px;
 }
 .container.me{
   flex-direction: row-reverse;
@@ -16,14 +17,18 @@
 }
 .btm{
   position: fixed;
-  width: 100%;
-  bottom: 0;
-  display: flex;
-  flex-direction: row;
+    width: 100%;
+    bottom: 0;
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    background: hsla(180,51.4%,51.6%,1);
 }
 .btm input{
-  padding: 10px 0;
+  padding: 10px;
   flex-grow: 1;
+  border: none;
+  border-radius: 5px 0 0 5px;
 }
 .btm button{
   padding: 10px 0;
