@@ -11,12 +11,19 @@ function App() {
   const db = getDatabase();
   const chatListRef = ref(db, "chats");
 
+  const updateHeight = () => {
+    const el = document.getElementById("chats");
+    if(el){
+      el.scrolltop = el.scrollHeight;
+    }
+  };
+
   useEffect(() => {
     onChildAdded(chatListRef, (data) => {
-      // const c = [...chats]
-      // c.push(data.val());
-      setChats((chats) => [...chats, data.val()]);
-      // console.log(data.val());
+      setChats(chats => [...chats, data.val()])
+      setTimeout(()=>{
+        updateHeight()  
+      },100)
     });
   }, []);
 
@@ -26,17 +33,13 @@ function App() {
       name,
       message: msg,
     });
-
-    // const c = [...chats];
-    // c.push();
-    // setChats(c);
     setMsg("");
   };
 
   return (
     <div>
       {name ? null : (
-        <div>
+        <div className="start-box">
           <input
             type="text"
             placeholder="Enter name to start"
